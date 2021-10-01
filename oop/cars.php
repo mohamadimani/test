@@ -7,12 +7,12 @@ class cars
     private static $color = 'red';
     private static $price = '1200000';
 
-    private static function setName($name)
+    protected static function setName($name)
     {
-        self::$name = $name;
+        cars::$name = $name;
     }
 
-    private static function getName()
+    protected static function getName()
     {
 
         return cars::$name;
