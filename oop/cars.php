@@ -14,7 +14,7 @@ class cars
 
     private static function getName()
     {
-        
+
         return cars::$name;
     }
 
@@ -37,8 +37,4 @@ class cars
     {
         return self::$price;
     }
-
-
 }
-
-
