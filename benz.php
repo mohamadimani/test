@@ -11,6 +11,8 @@ class benz extends cars
         benz::$color = !empty($color) ? $color : cars::getColor();
     }
 
+
+    
     public static function gColor()
     {
         benz::Color();
