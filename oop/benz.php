@@ -6,7 +6,7 @@ class benz extends cars
 {
     private static $color;
 
-    public  function Color($color = null)
+    public static function Color($color = null)
     {
         benz::$color = !empty($color) ? $color : cars::getColor();
     }
