@@ -1,0 +1,67 @@
+<html>
+
+<head>
+    <script type="text/javascript" src="jQuery.js"></script>
+    <style>
+
+        .bottom {
+            width: 110px;
+            height: 40px;
+            background-color: #7081ff;
+            border-radius: 5px;
+            box-shadow: 1px 1px 1px #797979;
+            text-align: center;
+            color: white;
+            padding: 5px 10px;
+            cursor: pointer;
+            position: absolute;
+            left: 100px;
+            top: 100px;
+            line-height: 40px;
+            font-weight: bold;
+        }
+
+    </style>
+
+
+</head>
+
+<body>
+
+
+<span class="bottom">Start</span>
+
+</body>
+
+
+</html>
+
+
+<script>
+
+    $('body').on('keydown', function (event) {
+        // alert(event.keyCode)
+        if (event.keyCode == 37) {
+            var left = $('span').css('left');
+            left = parseInt(left);
+            $('span').css({'left': left - 10 + 'px'})
+        }
+        if (event.keyCode == 38) {
+            var left = $('span').css('top');
+            left = parseInt(left);
+            $('span').css({'top': left - 10 + 'px'})
+        }
+        if (event.keyCode == 39) {
+            var left = $('span').css('left');
+            left = parseInt(left);
+            $('span').css({'left': left + 10 + 'px'})
+        }
+        if (event.keyCode == 40) {
+            var left = $('span').css('top');
+            left = parseInt(left);
+            $('span').css({'top': left + 10 + 'px'})
+        }
+    })
+
+
+</script>
