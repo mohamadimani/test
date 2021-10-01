@@ -16,11 +16,6 @@ class benz extends cars
         benz::Color();
         return benz::$color;
     }
-
-    
-    
-
-
 }
 
 //$thiss = new benz();
