@@ -17,9 +17,7 @@ class benz extends cars
         return benz::$color;
     }
 
-    
-    
-
+     
 
 }
 
