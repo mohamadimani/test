@@ -23,9 +23,9 @@ class cars
         self::$color = $color;
     }
 
-    protected static function getColor()
+    public static function getColor($p=null)
     {
-        return cars::$color;
+        return cars::$color .$p;
     }
 
     protected static function setPrice($price)
