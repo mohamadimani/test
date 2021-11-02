@@ -8,6 +8,7 @@
     <title>Document</title>
 
     <link href="accets/plugins/bootstrap5/css/bootstrap.min.css" rel="stylesheet">
+    <link href="accets/css/style.css" rel="stylesheet">
 
 </head>
 
