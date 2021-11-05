@@ -1,20 +1,4 @@
-<?php include_once('include/header.php');
-
-$url = '../accets/files/mani/1';
-$urlArray = explode('/', $url);
-// print_r($urlArray);
-
-$newUrl = '';
-foreach ($urlArray as $u) {
-    if ($u == '..') {
-        $newUrl .= $u;
-    } else if (!is_dir($u)) {
-        $newUrl .= '/' . $u;
-        mkdir($newUrl);
-    }
-}
-file_put_contents($newUrl . 'mani.txt', 'Hello World');
-?>
+<?php include_once('include/header.php');?>
 
 <style>
     body {
