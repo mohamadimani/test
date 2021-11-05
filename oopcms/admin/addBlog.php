@@ -32,12 +32,13 @@ if (isset($_SESSION['error'])) { ?>
     <p class="text-muted error text-center mb-5 <?= $_SESSION['error']['error'] ?>" style="direction: rtl;">
         <?= $_SESSION['error']['error_text'] ?>
     </p>
-<?php unset($_SESSION['error']);} ?>
+<?php unset($_SESSION['error']);
+} ?>
 
 
 <div class="container">
     <div class="row">
-        <form method="post" action="../class/adminController.php">
+        <form method="post" action="../class/adminController.php" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="exampleInputEmail1">title </label>
                 <input name="title" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="title">
@@ -49,6 +50,11 @@ if (isset($_SESSION['error'])) { ?>
             <div class="form-group">
                 <label for="exampleInputPassword1">content</label>
                 <textarea name="content" type="te" class="form-control" id="exampleInputPassword3" placeholder="content"></textarea>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="exampleInputPassword1">image : </label>
+                <input type="file" name="image">
             </div>
             <br>
             <button type="submit" name="addblogbtn" class="btn btn-primary">save</button>

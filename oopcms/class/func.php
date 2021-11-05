@@ -46,7 +46,7 @@ class func
         exit();
     }
 
-    public static function saveBlog($title, $summary, $content)
+    public static function saveBlog($title, $summary, $content, $image)
     {
         if (!$title or !$summary or !$content) {
             $_SESSION['error'] = [
@@ -59,10 +59,24 @@ class func
             exit();
         }
         self::$conn = database::getDB();
-        $res = self::$conn->prepare('insert into blogs(title , summary, content) values(?,?,?)');
+
+        $imageInfo = self::uploadImage($image, $url = '../accets/images/');
+        if (!$imageInfo['name']) {
+            $_SESSION['error'] = [
+                'status' => false,
+                'info' => [],
+                'error' => 'danger',
+                'error_text' => 'مشکل در آپلود تصویر!'
+            ];
+            header('location:../admin/addBlog.php');
+            exit();
+        }
+
+        $res = self::$conn->prepare('insert into blogs(title , summary, content,image) values(?,?,?,?)');
         $res->bindValue(1, $title);
         $res->bindValue(2, $summary);
         $res->bindValue(3, $content);
+        $res->bindValue(4, $imageInfo['name']);
         if ($res->execute()) {
             $_SESSION['error'] =  [
                 'status' => true,
@@ -96,5 +110,19 @@ class func
             return ($blogs->execute() ? $blogs->fetch(2) : []);
         }
         return ($blogs->execute() ? $blogs->fetchAll(2) : []);
+    }
+
+    public static function uploadImage($image, $url)
+    {
+        $newName = time() . '.jpg';
+        $url = $url . $newName;
+        if (move_uploaded_file($image['tmp_name'], $url)) {
+            return [
+                'name' => $newName
+            ];
+        }
+        return [
+            'name' => null
+        ];
     }
 }

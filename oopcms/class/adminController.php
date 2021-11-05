@@ -5,7 +5,7 @@ if (isset($_POST['loginbtn'])) {
     func::login($_POST['username'], $_POST['password']);
 }
 if (isset($_POST['addblogbtn'])) {
-    func::saveBlog($_POST['title'], $_POST['summary'], $_POST['content']);
+    func::saveBlog($_POST['title'], $_POST['summary'], $_POST['content'],$_FILES['image']);
 }
 
 if (isset($_GET['logout'])) {
