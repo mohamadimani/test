@@ -1,4 +1,5 @@
 <?php
+session_start();
 class database
 {
 
@@ -9,8 +10,7 @@ class database
     private static $conn;
 
     private static function databace()
-    { 
-        session_start();
+    {  
         $utf = array(PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8');
         self::$conn = new pdo('mysql:host=' . self::$host . ';dbname=' . self::$db, self::$user, self::$pass, $utf);
         return self::$conn;

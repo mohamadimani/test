@@ -1,20 +1,9 @@
 <?php
-include_once('../class/admin_login.php');
 include_once('header.php');
-    
-$result = '';
-if (isset($_POST['username']) and isset($_POST['password'])) {
-    $result = admin_login::login($_POST['username'], $_POST['password']);
-    if ($result['status']) {
-        $_SESSION['userInfo'] = $result['info'];
-    }
-} 
 
-
-if (isset($_SESSION['userInfo'])) {
+if (isset($_SESSION['userinfo'])) {
     header('location:index.php');
 }
-
 ?>
 
 <div class="container">
@@ -23,7 +12,7 @@ if (isset($_SESSION['userInfo'])) {
 
             <!-- Heading -->
             <h1 class="display-4 text-center mb-3">
-                Sign in
+                Login
             </h1>
             <style>
                 .error {
@@ -35,6 +24,7 @@ if (isset($_SESSION['userInfo'])) {
                     color: white !important;
                     font-weight: bold;
                     font-size: 18px;
+                    text-shadow: 1px 1px 3px #8b8b8b;
                 }
 
                 .danger {
@@ -46,13 +36,14 @@ if (isset($_SESSION['userInfo'])) {
                 }
             </style>
             <!-- Subheading -->
-            <?php if (isset($result['error'])) { ?>
-                <p class="text-muted error text-center mb-5 <?= $result['error'] ?>" style="direction: rtl;">
-                    <?= $result['error_test'] ?>
+            <?php
+            if (isset($_SESSION['error'])) { ?>
+                <p class="text-muted error text-center mb-5 <?= $_SESSION['error']['error'] ?>" style="direction: rtl;">
+                    <?= $_SESSION['error']['error_text'] ?>
                 </p>
-            <?php } ?>
+            <?php unset($_SESSION['error']);} ?>
             <!-- Form -->
-            <form method="post" action="#">
+            <form method="post" action="../class/adminController.php">
                 <!-- Email address -->
                 <div class="form-group">
                     <!-- Label -->
@@ -89,16 +80,10 @@ if (isset($_SESSION['userInfo'])) {
                 </div>
 
                 <!-- Submit -->
-                <button class="btn btn-lg w-100 btn-primary mb-3">
-                    Sign in
+                <button name="loginbtn" type="submit" class="btn btn-lg w-100 btn-primary mb-3">
+                    Login
                 </button>
 
-                <!-- Link -->
-                <div class="text-center">
-                    <small class="text-muted text-center">
-                        <a href="signUp.php">Sign up</a>.
-                    </small>
-                </div>
 
             </form>
 
